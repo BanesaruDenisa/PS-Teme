@@ -1,0 +1,18 @@
+fs = 1/T
+a)
+fs = 2000 Hz
+
+2000 = 1/T -> T = 1/2000 = 0.0005 s
+
+b)
+2000 esantioane/s
+1 esantion... 4 biti
+2000 esantioane... 8000 biti
+
+esantioane/ora = 7200000
+
+1 esantion... 4 biti
+7200000 esantioane... x biti
+x= 28800000/8 = 3600000 bytes
+
+
