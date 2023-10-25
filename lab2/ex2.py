@@ -14,10 +14,9 @@ zn = np.random.normal(1, len(x))
 snr = [0.1, 1, 10, 100]
 
 def calc_zgomot(x , zn, snr):
-    for s in x:
-        for i in snr:
-            gama = np.linalg.norm(x)**2 / (i * np.linalg.norm(zn)**2)
-            x_nou = s + gama * zn
+    for i in snr:
+        gama = np.linalg.norm(x)**2 / (i * np.linalg.norm(zn)**2)
+        x_nou = x + gama * zn
 
     return x_nou
 
