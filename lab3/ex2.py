@@ -15,6 +15,7 @@ omega = [1, 2, 5, 7]
 # plt.show()
 
 # frecventa de infasurare
+
 for i in range(4):
     y = x * np.exp(-2j * np.pi * omega[i] * t)
     plt.subplot(2, 2, i +1)
@@ -23,6 +24,5 @@ for i in range(4):
     plt.axvline(0, color='black', linewidth=1)
     plt.xlabel("Real")
     plt.ylabel("Imaginar")
-
 
 plt.show()
