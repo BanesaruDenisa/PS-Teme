@@ -1,0 +1,6 @@
+Frecvent,ele emise de un contrabas se ˆıncadreaz˘a ˆıntre 40Hz s, i 200Hz
+
+F maxima = 200 Hz
+aplicam teorema Nyquist-Shannon ->
+Fs min = 2 * 200 Hz = 400 Hz
+trebuie să folosim o frecvență de eșantionare de cel puțin 400 Hz
