@@ -15,3 +15,4 @@ x1_x2 = np.concatenate((x1, x2))
 
 sd.play(x1_x2, 1000)
 sd.wait()
+
