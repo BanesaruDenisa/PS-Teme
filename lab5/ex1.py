@@ -1,35 +1,35 @@
+import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import csv
-
-x = np.genfromtxt('Train.csv', delimiter=',')
-
-fs = 1000
-t = len(x) / fs
-N = len(x) - 1
-
-# semnal = np.array(x)
-# x_esant = semnal[::int(1 / (fs * (1.0 / t)))]
-#
-# X = np.fft.fft(x)
-# X = abs(X/N)
-# X = X[:N/2]
-# f = fs*np.linspace(0, N//2, N//2)/N
-#
-# plt.stem(t, x_esant)
-# plt.axhline(0, color='black', linewidth=1)
-# plt.axvline(0, color='black', linewidth=1)
-# plt.xlabel("Esantionare")
-# plt.ylabel("Nr masini")
+from datetime import datetime
 
 
+file = 'Train.csv'
+x = pd.read_csv(file, delimiter=',')
+x['Datetime'] = pd.to_datetime(x['Datetime'])
+time_diff = x['Datetime'].diff().dropna()
+
+t = 3600
+f_esant = 1 / t
+f_nyquist = f_esant / 2
+
+total_time = x['Datetime'].iloc[-1] - x['Datetime'].iloc[0]
+
+nr_masini = x['Count']
+esantioane = x['ID']
+
+print(f"Timpul total este: {total_time}")
+print(f"Frecventa de esantionare este: {f_esant}")
+print(f"Frecventa de maxima este: {f_nyquist}")
+
+plt.figure(figsize=(15, 6))
+plt.plot(esantioane, nr_masini, label='Traffic Count')
+plt.xlabel('Esantioane')
+plt.ylabel('Nr masini')
+plt.title('Traffic Data')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.legend()
+plt.show()
 
 
-
-x['time_diff'] = x['time_diff'].diff
-x['time_diff_seconds'] = x['time_diff'].dt.total_seconds()
-x = x.dropna()
-interval = x['time_diff_seconds'].mean()
-frecventa = 1 / interval
-
-print(f"Frecventa de esantionare este: {frecventa}")
