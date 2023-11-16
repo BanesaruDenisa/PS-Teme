@@ -13,7 +13,7 @@ one_month_from_monday = data.iloc[monday_start_index:monday_start_index + 24*30]
 
 plt.figure(figsize=(15, 6))
 plt.plot(one_month_from_monday['Datetime'], one_month_from_monday['Count'], color='green')
-plt.title('One Month of Traffic Data Starting from a Monday')
+plt.title('O luna de trafic ')
 plt.xlabel('Date')
 plt.ylabel('Count')
 plt.grid()

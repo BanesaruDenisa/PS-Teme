@@ -16,14 +16,18 @@ N = len(x)
 transformata = np.fft.fft(x)
 X = abs(transformata/N)
 #X = X[:N//2]
-#frecvente = f_esant*np.linspace(0, N/2, N/2)/N   imi dadea eroare
+#frecvente = f_esant*np.linspace(0, N/2, N/2)/N   aveam eroare
 frecvente = np.fft.fftfreq(N, f_esant)
 
 
+transformata[0] = 0
+X = abs(transformata/N)
+frecvente = np.fft.fftfreq(N, f_esant)
+
 plt.figure(figsize=(12, 6))
 plt.plot(frecvente, X)
-plt.title("Fourier Transform ")
-plt.xlabel("Frequency (Hz)")
+plt.title("Transformata Fourier ")
+plt.xlabel("Frecventa (Hz)")
 plt.ylabel("Modul X")
 plt.grid()
 plt.show()
@@ -37,8 +41,11 @@ sort_index = np.argsort(X)[::-1]
 top_4frecvente = np.abs(frecvente[sort_index[:4]])
 
 print("Cele 4 frecvente principale sunt:")
-for i, freq in enumerate(top_4frecvente):
-    print(f"Frecvența {i+1}: {freq} Hz")
+for i, f in enumerate(top_4frecvente):
+    perioada_ore = 1 / f / 3600
+    print(f"Frecvența {i+1}: {f} Hz")
+
+    # o zi o saptaman si un an
 
 
 
