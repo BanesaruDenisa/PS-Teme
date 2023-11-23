@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-
 file = 'Train.csv'
 data = pd.read_csv(file, delimiter=',')
 
@@ -14,10 +13,10 @@ x = data['Count'].values
 #### transformata
 N = len(x)
 transformata = np.fft.fft(x)
-X = abs(transformata/N)
+#X = abs(transformata/N)
 #X = X[:N//2]
 #frecvente = f_esant*np.linspace(0, N/2, N/2)/N   aveam eroare
-frecvente = np.fft.fftfreq(N, f_esant)
+#frecvente = np.fft.fftfreq(N, f_esant)
 
 
 transformata[0] = 0
@@ -42,10 +41,16 @@ top_4frecvente = np.abs(frecvente[sort_index[:4]])
 
 print("Cele 4 frecvente principale sunt:")
 for i, f in enumerate(top_4frecvente):
-    perioada_ore = 1 / f / 3600
-    print(f"Frecvența {i+1}: {f} Hz")
 
-    # o zi o saptaman si un an
+    ore_per_ciclu = 1 / f / 3600
+    zile_per_ciclu = ore_per_ciclu / 24
+    saptamani_ciclu = zile_per_ciclu / 7
+
+    print(f"Frecvența {i + 1}: {f} Hz, echivalent cu {ore_per_ciclu} ore per ciclu")
+    print(f"Frecvența {i + 1}: {f} Hz, echivalent cu {zile_per_ciclu} zile per ciclu")
+    print(f"Frecvența {i + 1}: {f} Hz, echivalent cu {saptamani_ciclu} saptamani per ciclu")
+
+    # o zi o saptamana si un an
 
 
 
