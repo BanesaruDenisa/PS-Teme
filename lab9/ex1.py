@@ -2,28 +2,21 @@ import numpy as np
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
 
-# (a) Generarea seriei de timp
 np.random.seed(42)
 
 N = 1000
 t = np.arange(N)
 
-#trend (ecuație de grad 2)
 trend = 0.02 * t**2
 
-# Două componente de sezon cu frecvențe diferite
 season = 5 * np.sin(2 * np.pi * t / 100) + 3 * np.sin(2 * np.pi * t / 30)
 
-# Variatii mici folosind zgomot alb gaussian
 noise = np.random.normal(0, 1, N)
 
-# Seria de timp
 time_series = trend + season + noise
 
-# Adăugăm seria de timp într-un obiect ExponentialSmoothing
 model = sm.tsa.ExponentialSmoothing(time_series)
 
-# Potrivim modelul
 fit_model = model.fit()
 
 # Obținem seria rezultată din medierea exponențială
