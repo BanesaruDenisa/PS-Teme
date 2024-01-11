@@ -7,16 +7,14 @@ import matplotlib.pyplot as plt
 medie = 5
 varianta = 2
 
-# Generare de date
 data_unidimensionala = np.random.normal(medie, np.sqrt(varianta), 1000)
 
-# Afișare pe un grafic
 plt.hist(data_unidimensionala, bins=30, density=True, alpha=0.6, color='g')
 plt.title('Distribuție Gaussiană Unidimensională')
 plt.xlabel('Valoare')
 plt.ylabel('Densitate de probabilitate')
+plt.grid()
 plt.show()
-
 
 
 
@@ -31,3 +29,5 @@ plt.title('Distribuție Gaussiană Bidimensională')
 plt.xlabel('Valoare pe axa X')
 plt.ylabel('Valoare pe axa Y')
 plt.axis('equal')
+plt.grid()
+plt.show()
